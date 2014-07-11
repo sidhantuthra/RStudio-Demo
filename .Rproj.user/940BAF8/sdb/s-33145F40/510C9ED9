@@ -1,0 +1,17 @@
+{
+    "contents" : "library(shiny)\nlibrary(ggplot2)\n\nshinyServer(function(input, output) {\n  \n  dataset <- reactive(function() {\n    diamonds[sample(nrow(diamonds), input$sampleSize),]\n  })\n  \n  output$plot <- reactivePlot(function() {\n    \n    p <- ggplot(dataset(), aes_string(x=input$x, y=input$y)) + geom_point()\n    \n    if (input$color != 'None')\n      p <- p + aes_string(color=input$color)\n    \n    facets <- paste(input$facet_row, '~', input$facet_col)\n    if (facets != '. ~ .')\n      p <- p + facet_grid(facets)\n    \n    if (input$jitter)\n      p <- p + geom_jitter()\n    if (input$smooth)\n      p <- p + geom_smooth()\n    \n    print(p)\n    \n  }, height=700)\n  \n})",
+    "created" : 1405088819808.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "3|37|29|0|\n5|34|7|2|\n9|42|27|2|\n5|34|7|2|\n9|42|27|2|\n",
+    "hash" : "631399879",
+    "id" : "510C9ED9",
+    "lastKnownWriteTime" : 1405088857,
+    "path" : "~/RStudio Demo/Server.R",
+    "project_path" : "Server.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

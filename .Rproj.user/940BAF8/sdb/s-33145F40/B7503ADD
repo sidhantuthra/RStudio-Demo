@@ -1,0 +1,17 @@
+{
+    "contents" : "library(shiny)\nlibrary(ggplot2)\n\ndataset <- diamonds\n\nshinyUI(pageWithSidebar(\n  \n  headerPanel(\"Diamonds Explorer\"),\n  \n  sidebarPanel(\n    \n    sliderInput('sampleSize', 'Sample Size', min=1, max=nrow(dataset),\n                value=min(1000, nrow(dataset)), step=500, round=0),\n    \n    selectInput('x', 'X', names(dataset)),\n    selectInput('y', 'Y', names(dataset), names(dataset)[[2]]),\n    selectInput('color', 'Color', c('None', names(dataset))),\n    \n    checkboxInput('jitter', 'Jitter'),\n    checkboxInput('smooth', 'Smooth'),\n    \n    selectInput('facet_row', 'Facet Row', c(None='.', names(dataset))),\n    selectInput('facet_col', 'Facet Column', c(None='.', names(dataset)))\n  ),\n  \n  mainPanel(\n    plotOutput('plot')\n  )\n))",
+    "created" : 1405088864094.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "32743992",
+    "id" : "B7503ADD",
+    "lastKnownWriteTime" : 1405088879,
+    "path" : "~/RStudio Demo/UI.R",
+    "project_path" : "UI.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
